@@ -7,12 +7,12 @@ on:
  # Triggers the workflow on push or pull request events but only for the master branch
  push:
   paths:
-  - 'santi2019/spring-boot/**'
-  branches: [ master ]
+  - 'spring-boot/**'
+  branches: [ main ]
  pull_request:
   paths:
-  - 'santi2019/spring-boot/**'
-  branches: [ master ]
+  - 'spring-boot/**'
+  branches: [ main ]
 
  # Allows you to run this workflow manually from the Actions tab
  workflow_dispatch:
@@ -40,5 +40,4 @@ jobs:
    # Compile the application
    - name: Build with Maven
      run: |
-      cd santi2019/spring-boot
       mvn -B package --file pom.xml
