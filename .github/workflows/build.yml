@@ -40,5 +40,5 @@ jobs:
    # Compile the application
    - name: Build with Maven
      run: |
-      cd /home/vietto/spring-boot
+      cd santi2019/spring-boot
       mvn -B package --file pom.xml
