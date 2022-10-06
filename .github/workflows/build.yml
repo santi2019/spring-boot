@@ -40,5 +40,5 @@ jobs:
    # Compile the application
    - name: Build with Maven
      run: |
-      cd /home/vietto/Documents/UCC-Santi/IngenieriaDeSoftware3/TrabajoPractico6/spring-boot/ing-software-3/proyectos/spring-boot
+      cd /home/vietto/spring-boot
       mvn -B package --file pom.xml
