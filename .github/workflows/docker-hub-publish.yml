@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Docker
 
 # Controls when the workflow will run
 on:
@@ -11,7 +11,7 @@ on:
     branches: [ main ]
   pull_request:
     paths:
-    - '.**'  
+    - '.**'
     branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -20,31 +20,10 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 env:
     # github.repository as <account>/<repo>
-    IMAGE_NAME: spring-boot
-    
+    IMAGE_NAME: spring-boot-github
+
 jobs:
   # This workflow contains a single job called "build"
-  build-maven:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Install Java JDK with maven
-      - name: Set up JDK 8
-        uses: actions/setup-java@v2
-        with:
-          java-version: '8'
-          distribution: 'adopt'
-          cache: maven
-          
-      # Compile the application
-      - name: Build with Maven
-        run: |
-          mvn -B package --file pom.xml
   build-docker:
 
       runs-on: ubuntu-latest
@@ -115,14 +94,3 @@ jobs:
           # This step uses the identity token to provision an ephemeral certificate
           # against the sigstore community Fulcio instance.
           run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
-  Unit-Test:
-      runs-on: ubuntu-latest
-      permissions:
-        contents: read
-        packages: write
-        # This is used to complete the identity challenge
-        # with sigstore/fulcio when running outside of PRs.
-        id-token: write
-      steps:
-        - name: Call Unit Tests
-          run: mvn test -f "./pom.xml"
