@@ -5,7 +5,7 @@ COPY src /tmp/src/
 WORKDIR /tmp/
 RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package
 FROM openjdk:8-jre-alpine
-EXPOSE 808
+EXPOSE 8080
 RUN mkdir /app
 COPY --from=MAVEN_TOOL_CHAIN /tmp/target/*.jar /app/spring-boot-application.jar
 ENV PORT=8080
