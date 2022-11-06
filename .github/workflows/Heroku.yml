@@ -34,8 +34,8 @@ jobs:
         uses: actions/setup-java@v2
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
-          heroku_email: "YOUR EMAIL"
+          heroku_app_name: "agile-ravine-60366" #Must be unique in Heroku
+          heroku_email: "santiagovietto5@hotmail.com"
           java-version: '8'
           distribution: 'adopt'
           cache: maven
