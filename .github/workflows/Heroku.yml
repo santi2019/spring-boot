@@ -28,7 +28,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
 
       # Install Java JDK with maven
       - name: Set up JDK 8
